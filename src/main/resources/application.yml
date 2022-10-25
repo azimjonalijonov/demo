@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/postgres
+      username: username
+      password: 25293
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQL92Dialect
+      hibernate:
+        ddl-auto: update
+upload:
+  server:
+    folder: /home/alijonoff/Documents/upload/
+
+
+
