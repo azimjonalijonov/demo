@@ -41,7 +41,8 @@ private final Hashids hashids;
            System.out.println("created");
        }
        fileStorage.setHashId(hashids.encode(fileStorage.getId()));
-        String pathLocal =String.format("/upload_files/%d/%d/%d/%s.%s",1900+now.getYear(),1+now.getMonth(),now.getDate());
+        String pathLocal=String.format("/upload_files/%d/%d/%d/%s.%s",1900+now.getYear(),1+now.getMonth(),
+                now.getDate(),fileStorage.getHashId(),fileStorage.getExtension());
       fileStorage.setUploadFolder(pathLocal);
        fileStorageRepository.save(fileStorage);
        uploadFolder =uploadFolder.getAbsoluteFile();
