@@ -34,17 +34,15 @@ private final Hashids hashids;
        fileStorage.setExtension(getExt(multipartFile.getOriginalFilename()));
        fileStorage =fileStorageRepository.save(fileStorage);
        Date now =new Date();
-//       File uploadFolder =new File(this.serverFolderPath+"/upload_files"+
-//               1900+now.getYear()+"/"+1+now.getMonth()+"/"+now.getDate());
-       String path = String.format("%s/upload_files/%d/%d/%d",this.serverFolderPath,1900+now.getYear(),1+now.getMonth(),now.getDate());
+       String path = String.format("%s/upload_files/%d/%d/%d/",this.serverFolderPath,1900+now.getYear(),
+               1+now.getMonth(),now.getDate());
        File uploadFolder=new File(path);
        if (!uploadFolder.exists()&& uploadFolder.mkdirs()){
            System.out.println("created");
        }
        fileStorage.setHashId(hashids.encode(fileStorage.getId()));
         String pathLocal =String.format("/upload_files/%d/%d/%d/%s.%s",1900+now.getYear(),1+now.getMonth(),now.getDate());
-       //fileStorage.setUploadFolder(path+"/"+fileStorage.getHashId()+"."+fileStorage.getExtension());
-       fileStorage.setUploadFolder(pathLocal);
+      fileStorage.setUploadFolder(pathLocal);
        fileStorageRepository.save(fileStorage);
        uploadFolder =uploadFolder.getAbsoluteFile();
        File file =new File(uploadFolder,String.format("%s.%s", fileStorage.getHashId(),fileStorage.getExtension()));
