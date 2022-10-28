@@ -15,5 +15,8 @@ upload:
   server:
     folder: /home/alijonoff/Documents/upload/
 
+api:
+  placeholder: https://jsonplaceholder.typicode.com
+
 
 

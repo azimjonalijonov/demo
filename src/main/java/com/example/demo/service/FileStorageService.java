@@ -55,6 +55,9 @@ private final Hashids hashids;
        return fileStorage;
 
     }
+    public FileStorage findByHashId(String hashId){
+     return fileStorageRepository.findByHashId(hashId);
+    }
     private String getExt(String fileName){
         String ext =null;
         if (fileName!=null&&!fileName.isEmpty()){
