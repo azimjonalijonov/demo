@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.Entity.PostData;
 import com.example.demo.model.Post;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +71,9 @@ public class PostService {
          return result;
 
      }
+   public Page<PostData> findAL(Pageable pageable){
+        return postDataService.findAll(pageable);
+   }
 
 
 }
