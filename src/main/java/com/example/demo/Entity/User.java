@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Reference;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -15,19 +16,19 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NonNull
-    @Size(max = 40,min = 4)
-    @Column(length = 50, unique = true, nullable = false)
+    @NotNull
+    @Size(max = 40,min = 1)
+    @Column(length = 255, unique = true, nullable = false)
     private String login;
-    @NonNull
-    @Size(max = 60,min = 20)
-    @Column(length = 60,unique = true,nullable = false)
+    @NotNull
+    @Size(max = 60,min = 1)
+    @Column(length = 255,unique = true,nullable = false)
     private String  password;
 
     private String firstName;
     private String lastName;
     private String email;
-    @NonNull
+    @NotNull
     @Column(nullable = false)
     public  Boolean activator=false;
 
@@ -51,21 +52,21 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @NonNull
+    @NotNull
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(@NonNull String login) {
+    public void setLogin(@NotNull String login) {
         this.login = login;
     }
 
-    @NonNull
+    @NotNull
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(@NonNull String password) {
+    public void setPassword(@NotNull String password) {
         this.password = password;
     }
 
@@ -93,12 +94,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    @NonNull
+    @NotNull
     public Boolean getActivator() {
         return activator;
     }
 
-    public void setActivator(@NonNull Boolean activator) {
+    public void setActivator(@NotNull Boolean activator) {
         this.activator = activator;
     }
 

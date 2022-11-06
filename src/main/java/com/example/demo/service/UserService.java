@@ -1,5 +1,4 @@
 package com.example.demo.service;
-
 import com.example.demo.Entity.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +17,7 @@ public class UserService {
        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
-    public boolean existByLogin(String login){
+    public boolean existByLogin(String login) {
         return userRepository.existsByLogin(login);
     }
 
