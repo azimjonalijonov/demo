@@ -23,7 +23,7 @@ public class UserResource {
     @GetMapping("/register")
     public ResponseEntity save(@RequestBody User user){
         if (userService.existByLogin(user.getLogin())){
-            return new ResponseEntity("bu user mvjud", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("bu user mavjud", HttpStatus.BAD_REQUEST);
 
         }
         if (lengthCheck(user.getPassword())) {

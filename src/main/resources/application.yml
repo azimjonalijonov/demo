@@ -18,5 +18,10 @@ upload:
 api:
   placeholder: https://jsonplaceholder.typicode.com
 
+jwt:
+  token:
+    secret: yes
+    validity: 86400000
+
 
 

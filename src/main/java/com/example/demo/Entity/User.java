@@ -1,6 +1,8 @@
 package com.example.demo.Entity;
 
+import org.hibernate.annotations.Fetch;
 import org.springframework.data.annotation.Reference;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -34,7 +36,7 @@ public class User implements Serializable {
 
     private String langKey;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable (
             name = "user_role",
             joinColumns ={@JoinColumn(name = "user_id",referencedColumnName = "id")},
