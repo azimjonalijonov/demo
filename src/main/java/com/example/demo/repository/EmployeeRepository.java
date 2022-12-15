@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 
-public interface EmployeeRepository extends JpaRepository<Employee,Long> {
+public interface  EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query( "select  e from Employee e where e.name=:name and e.last_name =:last_name")
     List<Employee> findAll(@Param("name") String name,
                            @Param("last_name")String last_name);

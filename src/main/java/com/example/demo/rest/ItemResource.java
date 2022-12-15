@@ -2,10 +2,8 @@ package com.example.demo.rest;
 
 import com.example.demo.Entity.Item;
 import com.example.demo.service.ItemService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -21,4 +19,11 @@ public class ItemResource {
         Item i =itemService.save(item);
         return i;
     }
+    @GetMapping("get")
+    public ResponseEntity find(@PathVariable int id){
+        Item res = itemService.find(id);
+        return ResponseEntity.ok(res);
+    }
+
+
 }
