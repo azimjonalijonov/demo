@@ -19,7 +19,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(max = 40,min = 1)
+    @Size(max = 50,min = 4)
     @Column(length = 255, unique = true, nullable = false)
     private String login;
     @NotNull
@@ -36,7 +36,7 @@ public class User implements Serializable {
 
     private String langKey;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable (
             name = "user_role",
             joinColumns ={@JoinColumn(name = "user_id",referencedColumnName = "id")},

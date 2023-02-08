@@ -25,4 +25,6 @@ public interface  EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query(value = "select * from devstudent d where d.name like %:name% order by d.id desc",nativeQuery = true)
     List<Employee> findAllByNameLike(@Param("name") String name);
+    @Query(value = "Select * from devstudent d where d.account like %: account order by d.id asc ",nativeQuery = true)
+    List<Employee> findAllByAccounts(@Param("account") String account);
 }

@@ -3,8 +3,8 @@ package com.example.demo.service;
 import com.example.demo.Entity.FileStorage;
 import com.example.demo.Entity.enumeration.FileStorageStatus;
 import com.example.demo.repository.FileStorageRepository;
-import org.hashids.Hashids;
-import org.springframework.beans.factory.annotation.Value;
+import org.hashids.Hashids;import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
@@ -29,11 +29,11 @@ private final Hashids hashids;
 
         fileStorage.setName(multipartFile.getOriginalFilename());
         fileStorage.setFileSize(multipartFile.getSize());
-       fileStorage.setContentType(multipartFile.getContentType());
-       fileStorage.setFileStorageStatus(FileStorageStatus.DRAFT);
-       fileStorage.setExtension(getExt(multipartFile.getOriginalFilename()));
-       fileStorage =fileStorageRepository.save(fileStorage);
-       Date now =new Date();
+        fileStorage.setContentType(multipartFile.getContentType());
+        fileStorage.setFileStorageStatus(FileStorageStatus.DRAFT);
+        fileStorage.setExtension(getExt(multipartFile.getOriginalFilename()));
+        fileStorage =fileStorageRepository.save(fileStorage);
+        Date now =new Date();
        String path = String.format("%s/upload_files/%d/%d/%d/",this.serverFolderPath,1900+now.getYear(),
                1+now.getMonth(),now.getDate());
        File uploadFolder=new File(path);

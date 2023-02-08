@@ -54,7 +54,7 @@ public class PostService {
                 .queryParam("postId","{postId}")
                 .encode()
                 .toUriString();
-        Map<String, Object> params =new HashMap<>();
+        Map<String, Long> params =new HashMap<>();
         params.put("postId",postId);
 
         List<Post>  result = restTemplate.exchange(uriTemplate,HttpMethod.GET,entity,List.class,params).getBody();

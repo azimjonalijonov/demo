@@ -3,7 +3,7 @@ server:
 spring:
     datasource:
       url: jdbc:postgresql://localhost:5432/postgres
-      username: username
+      username: postgres
       password: 25293
     jpa:
       properties:
@@ -13,7 +13,7 @@ spring:
         ddl-auto: update
 upload:
   server:
-    folder: /home/alijonoff/Documents/upload/
+    folder: C:\Users\azimjon\Documents\Nmadur\
 
 api:
   placeholder: https://jsonplaceholder.typicode.com

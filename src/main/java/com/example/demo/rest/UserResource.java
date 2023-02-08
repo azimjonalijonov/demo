@@ -5,10 +5,7 @@ import com.example.demo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -20,7 +17,7 @@ public class UserResource {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
-    @GetMapping("/register")
+    @PostMapping("/register")
     public ResponseEntity save(@RequestBody User user){
         if (userService.existByLogin(user.getLogin())){
             return new ResponseEntity("bu user mavjud", HttpStatus.BAD_REQUEST);

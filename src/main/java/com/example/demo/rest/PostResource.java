@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class PostResource {
+public class    PostResource {
     private final PostService postService;
 
     public PostResource(PostService postService) {
@@ -35,7 +35,7 @@ public class PostResource {
         return ResponseEntity.ok(result);
     }
     @GetMapping("/posts/pageable")
-    public ResponseEntity getAll(Pageable pageable){
-    Page<PostData> smth =postService.findAL(pageable);
+    public ResponseEntity getAll(Pageable pageable ){
+    Page<PostData> smth =  postService.findAL(pageable);
     return ResponseEntity.ok(smth);
 }}

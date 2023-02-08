@@ -1,6 +1,6 @@
 package com.example.demo.security;
 
-
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class JwtFilter extends GenericFilterBean {
-    private final JWTProvider jwtProvider;
+private  final JWTProvider jwtProvider;
 
     public JwtFilter(JWTProvider jwtProvider) {
         this.jwtProvider = jwtProvider;
@@ -22,12 +22,11 @@ public class JwtFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String jwt = resolveToken(httpServletRequest);
-        if (StringUtils.hasText(jwt) && this.jwtProvider.validateToken(jwt)) {
+        HttpServletRequest httpServletRequest =(HttpServletRequest)  request;
+        String jwt =resolveToken(httpServletRequest);
+        if(StringUtils.hasText(jwt)&&this.jwtProvider.validateToken(jwt)){
             Authentication authentication = this.jwtProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
         }
         chain.doFilter(request,response);
     }
